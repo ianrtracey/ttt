@@ -35,6 +35,11 @@ const Home: NextPage = () => {
     socket.emit('input-change', e.target.value)
   }
 
+  const onPositionClickHandler = (e: any, position: number) => {
+    socket.emit('position-clicked', position)
+    console.log(e, position)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -44,12 +49,18 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <h1 className={'text-3xl'}>tic tac toe</h1>
-        <div className='relative w-100 mx-auto'>
-          <input
-            placeholder='Type something'
-            value={input}
-            onChange={onChangeHandler}
-          />
+        <div className='w-[300px] h-[300px] mx-auto'>
+          <div className='grid gap-4 grid-cols-3 grid-rows-3 bg-slate-200'>
+            {[...Array(9)].map((_, i) => (
+              <div
+                onClick={e => onPositionClickHandler(e, i)}
+                key={i}
+                className='p-3 bg-white'
+              >
+                hello
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
