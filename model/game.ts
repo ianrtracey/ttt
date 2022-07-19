@@ -14,6 +14,7 @@ const gameModel = (sequelize: any, Sequelize: any) => {
       defaultValue: 'new'
     }
   })
+  return Game
 }
 
 export default gameModel
